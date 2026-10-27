@@ -1,0 +1,313 @@
+{
+  "trace_id": "run_20261027T170402_opby",
+  "question": "Across all suppliers, did urgent orders in 1996-1997 actually arrive on time more often, and what explains the late ones?",
+  "scope": {
+    "yearFrom": 1996,
+    "yearTo": 1997
+  },
+  "data_source": "sample-tpch (SAMPLE_MODE)",
+  "answer": {
+    "summary": "63.4% of line items in scope arrived after the committed date. The strongest factor is dispatch lag (order → ship, days): 01-30d 9.2%, 31-60d 50.9%, 61-90d 91.1%, 91d+ 100%. Ship mode, Supplier region, Order priority were checked and ruled out.",
+    "supported": [
+      {
+        "factor": "dispatch_lag",
+        "label": "Dispatch lag (order → ship, days)",
+        "claim": "Late rate by dispatch lag (order → ship, days) ranges from 9.2% (01-30d) to 100% (91d+).",
+        "skeptic": "90.8 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 90.8,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "01-30d",
+            "n": 1848,
+            "late": 170,
+            "rate": 9.2
+          },
+          {
+            "bucket": "31-60d",
+            "n": 1857,
+            "late": 945,
+            "rate": 50.9
+          },
+          {
+            "bucket": "61-90d",
+            "n": 1854,
+            "late": 1689,
+            "rate": 91.1
+          },
+          {
+            "bucket": "91d+",
+            "n": 1976,
+            "late": 1976,
+            "rate": 100
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "transit_time",
+        "label": "Transit time (ship → receipt, days)",
+        "claim": "Late rate by transit time (ship → receipt, days) ranges from 55.6% (01-10d) to 71.4% (21-30d).",
+        "skeptic": "15.8 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 15.8,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "01-10d",
+            "n": 2477,
+            "late": 1378,
+            "rate": 55.6
+          },
+          {
+            "bucket": "11-20d",
+            "n": 2537,
+            "late": 1602,
+            "rate": 63.1
+          },
+          {
+            "bucket": "21-30d",
+            "n": 2521,
+            "late": 1800,
+            "rate": 71.4
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "commit_window",
+        "label": "Promised window (order → committed date, days)",
+        "claim": "Late rate by promised window (order → committed date, days) ranges from 45% (71-90d) to 81.5% (30-50d).",
+        "skeptic": "36.5 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 36.5,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "30-50d",
+            "n": 2608,
+            "late": 2126,
+            "rate": 81.5
+          },
+          {
+            "bucket": "51-70d",
+            "n": 2466,
+            "late": 1547,
+            "rate": 62.7
+          },
+          {
+            "bucket": "71-90d",
+            "n": 2461,
+            "late": 1107,
+            "rate": 45
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "ruled_out": [
+      {
+        "factor": "ship_mode",
+        "label": "Ship mode",
+        "claim": "Late rate by ship mode ranges from 61.6% (SHIP) to 65.4% (RAIL).",
+        "skeptic": "only 3.8 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 3.8,
+        "p_value": 0.551,
+        "buckets": [
+          {
+            "bucket": "AIR",
+            "n": 1095,
+            "late": 692,
+            "rate": 63.2
+          },
+          {
+            "bucket": "FOB",
+            "n": 1045,
+            "late": 651,
+            "rate": 62.3
+          },
+          {
+            "bucket": "MAIL",
+            "n": 1081,
+            "late": 700,
+            "rate": 64.8
+          },
+          {
+            "bucket": "RAIL",
+            "n": 1048,
+            "late": 685,
+            "rate": 65.4
+          },
+          {
+            "bucket": "REG AIR",
+            "n": 1045,
+            "late": 669,
+            "rate": 64
+          },
+          {
+            "bucket": "SHIP",
+            "n": 1113,
+            "late": 686,
+            "rate": 61.6
+          },
+          {
+            "bucket": "TRUCK",
+            "n": 1108,
+            "late": 697,
+            "rate": 62.9
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "supplier_region",
+        "label": "Supplier region",
+        "claim": "Late rate by supplier region ranges from 62.8% (EUROPE) to 64.1% (MIDDLE EAST).",
+        "skeptic": "only 1.3 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 1.3,
+        "p_value": 0.955,
+        "buckets": [
+          {
+            "bucket": "AFRICA",
+            "n": 1805,
+            "late": 1139,
+            "rate": 63.1
+          },
+          {
+            "bucket": "AMERICA",
+            "n": 1385,
+            "late": 883,
+            "rate": 63.8
+          },
+          {
+            "bucket": "ASIA",
+            "n": 1455,
+            "late": 924,
+            "rate": 63.5
+          },
+          {
+            "bucket": "EUROPE",
+            "n": 1488,
+            "late": 935,
+            "rate": 62.8
+          },
+          {
+            "bucket": "MIDDLE EAST",
+            "n": 1402,
+            "late": 899,
+            "rate": 64.1
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "order_priority",
+        "label": "Order priority",
+        "claim": "Late rate by order priority ranges from 61.3% (1-URGENT) to 64.9% (3-MEDIUM).",
+        "skeptic": "only 3.6 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 3.6,
+        "p_value": 0.402,
+        "buckets": [
+          {
+            "bucket": "1-URGENT",
+            "n": 1379,
+            "late": 846,
+            "rate": 61.3
+          },
+          {
+            "bucket": "2-HIGH",
+            "n": 1583,
+            "late": 1009,
+            "rate": 63.7
+          },
+          {
+            "bucket": "3-MEDIUM",
+            "n": 1481,
+            "late": 961,
+            "rate": 64.9
+          },
+          {
+            "bucket": "4-NOT SPECIFIED",
+            "n": 1522,
+            "late": 965,
+            "rate": 63.4
+          },
+          {
+            "bucket": "5-LOW",
+            "n": 1570,
+            "late": 999,
+            "rate": 63.6
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "inconclusive": [],
+    "recommended_actions": [
+      "Investigate the dispatch lag (order → ship, days) bucket with the highest late rate first.",
+      "Track this factor weekly so the team sees whether fixes reduce the late rate."
+    ],
+    "limitations": [
+      "Findings show association, not proven causation.",
+      "Scope: 7535 line items from the synthetic SAMPLE_MODE dataset."
+    ],
+    "report_markdown": "## Answer\n63.4% of line items in scope arrived after the committed date. The strongest factor is dispatch lag (order → ship, days): 01-30d 9.2%, 31-60d 50.9%, 61-90d 91.1%, 91d+ 100%. Ship mode, Supplier region, Order priority were checked and ruled out.\n\n## Supported\n- Dispatch lag (order → ship, days): 01-30d 9.2%, 31-60d 50.9%, 61-90d 91.1%, 91d+ 100% — 90.8 pp gap between buckets, p=0.0e+0\n- Transit time (ship → receipt, days): 01-10d 55.6%, 11-20d 63.1%, 21-30d 71.4% — 15.8 pp gap between buckets, p=0.0e+0\n- Promised window (order → committed date, days): 30-50d 81.5%, 51-70d 62.7%, 71-90d 45% — 36.5 pp gap between buckets, p=0.0e+0\n\n## Ruled out by the Skeptic\n- Ship mode: AIR 63.2%, FOB 62.3%, MAIL 64.8%, RAIL 65.4%, REG AIR 64%, SHIP 61.6%, TRUCK 62.9% — only 3.8 pp between best and worst bucket — no meaningful difference\n- Supplier region: AFRICA 63.1%, AMERICA 63.8%, ASIA 63.5%, EUROPE 62.8%, MIDDLE EAST 64.1% — only 1.3 pp between best and worst bucket — no meaningful difference\n- Order priority: 1-URGENT 61.3%, 2-HIGH 63.7%, 3-MEDIUM 64.9%, 4-NOT SPECIFIED 63.4%, 5-LOW 63.6% — only 3.6 pp between best and worst bucket — no meaningful difference\n\n## Inconclusive\n- none\n\n## Recommended actions\n- Investigate the dispatch lag (order → ship, days) bucket with the highest late rate first.\n- Track this factor weekly so the team sees whether fixes reduce the late rate."
+  },
+  "baseline": {
+    "n": 7535,
+    "late": 4780,
+    "rate": 63.4
+  },
+  "collaboration": {
+    "hypotheses_tested": 6,
+    "skeptic_send_backs": 0,
+    "skeptic_rejections": 3,
+    "report_audit_revisions": 0,
+    "retries": 0
+  },
+  "markovian": {
+    "run_id": "markovian-3-1793120642704",
+    "status": "completed",
+    "chunks": 8,
+    "carryover_tokens_budget": 384,
+    "tokens_used_estimated": 452,
+    "tokens_saved_estimated": 0,
+    "efficiency_percent": 0,
+    "final_carryover": "63.4% of line items in scope arrived after the committed date. The strongest factor is dispatch lag (order → ship, days): 01-30d 9.2%, 31-60d 50.9%, 61-90d 91.1%, 91d+ 100%. Ship mode, Supplier region, Order priority were checked and ruled out.\n\n[TASK_COMPLETE]",
+    "context_per_step": [
+      {
+        "step": 1,
+        "planner_context_tokens": 204,
+        "naive_history_tokens": 316
+      },
+      {
+        "step": 2,
+        "planner_context_tokens": 207,
+        "naive_history_tokens": 413
+      },
+      {
+        "step": 3,
+        "planner_context_tokens": 211,
+        "naive_history_tokens": 514
+      },
+      {
+        "step": 4,
+        "planner_context_tokens": 215,
+        "naive_history_tokens": 600
+      },
+      {
+        "step": 5,
+        "planner_context_tokens": 219,
+        "naive_history_tokens": 676
+      },
+      {
+        "step": 6,
+        "planner_context_tokens": 224,
+        "naive_history_tokens": 754
+      }
+    ]
+  },
+  "models_used": [
+    "offline-fallback"
+  ],
+  "duration_ms": 615,
+  "log_path": "logs/run_20261027T170402_opby.jsonl"
+}

@@ -1,0 +1,353 @@
+{
+  "trace_id": "run_20261027T225955_tznz",
+  "question": "Our German suppliers keep missing delivery dates. Is it the carriers, the shipping mode, or something else?",
+  "scope": {
+    "nation": "GERMANY",
+    "yearFrom": 1992,
+    "yearTo": 1998
+  },
+  "data_source": "zetaris",
+  "answer": {
+    "summary": "Deliveries are late because promised window and transit time are associated with higher late rates; for example, 30-50d windows show a 79.3% late rate versus 46.7% for 71-90d windows, and 21-30d transit time is associated with 71.1% lateness. Ship mode, order priority, and shipping instruction were ruled out as they show minimal differences (0.7 pp, 0.9 pp, and 1.3 pp respectively).",
+    "supported": [
+      {
+        "factor": "transit_time",
+        "label": "Transit time (ship → receipt, days)",
+        "claim": "The 21-30d transit time bucket is associated with a late delivery rate of 71.1%, which is higher than the 01-10d bucket's rate of 54.7%.",
+        "skeptic": "16.4 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 16.4,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "01-10d",
+            "n": 17443,
+            "late": 9543,
+            "rate": 54.7
+          },
+          {
+            "bucket": "11-20d",
+            "n": 17079,
+            "late": 10806,
+            "rate": 63.3
+          },
+          {
+            "bucket": "21-30d",
+            "n": 16943,
+            "late": 12051,
+            "rate": 71.1
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "commit_window",
+        "label": "Promised window (order → committed date, days)",
+        "claim": "Promised windows of 30-50 days are associated with a late rate of 79.3%, compared to 46.7% for 71-90 days.",
+        "skeptic": "32.6 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 32.6,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "30-50d",
+            "n": 17606,
+            "late": 13968,
+            "rate": 79.3
+          },
+          {
+            "bucket": "51-70d",
+            "n": 16904,
+            "late": 10515,
+            "rate": 62.2
+          },
+          {
+            "bucket": "71-90d",
+            "n": 16955,
+            "late": 7917,
+            "rate": 46.7
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "ruled_out": [
+      {
+        "factor": "ship_mode",
+        "label": "Ship mode",
+        "claim": "SHIP is associated with late deliveries",
+        "skeptic": "only 0.7 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 0.7,
+        "p_value": 0.965,
+        "buckets": [
+          {
+            "bucket": "AIR",
+            "n": 7264,
+            "late": 4567,
+            "rate": 62.9
+          },
+          {
+            "bucket": "FOB",
+            "n": 7384,
+            "late": 4613,
+            "rate": 62.5
+          },
+          {
+            "bucket": "MAIL",
+            "n": 7280,
+            "late": 4597,
+            "rate": 63.1
+          },
+          {
+            "bucket": "RAIL",
+            "n": 7341,
+            "late": 4621,
+            "rate": 62.9
+          },
+          {
+            "bucket": "REG AIR",
+            "n": 7325,
+            "late": 4600,
+            "rate": 62.8
+          },
+          {
+            "bucket": "SHIP",
+            "n": 7433,
+            "late": 4698,
+            "rate": 63.2
+          },
+          {
+            "bucket": "TRUCK",
+            "n": 7438,
+            "late": 4704,
+            "rate": 63.2
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "order_priority",
+        "label": "Order priority",
+        "claim": "Order priority is associated with late deliveries, with 1-URGENT at 63.2% late and 5-LOW at 62.5% late.",
+        "skeptic": "only 0.9 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 0.9,
+        "p_value": 0.519,
+        "buckets": [
+          {
+            "bucket": "1-URGENT",
+            "n": 10222,
+            "late": 6465,
+            "rate": 63.2
+          },
+          {
+            "bucket": "2-HIGH",
+            "n": 10376,
+            "late": 6557,
+            "rate": 63.2
+          },
+          {
+            "bucket": "3-MEDIUM",
+            "n": 10139,
+            "late": 6334,
+            "rate": 62.5
+          },
+          {
+            "bucket": "4-NOT SPECIFIED",
+            "n": 10334,
+            "late": 6547,
+            "rate": 63.4
+          },
+          {
+            "bucket": "5-LOW",
+            "n": 10394,
+            "late": 6497,
+            "rate": 62.5
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "ship_instruction",
+        "label": "Shipping instruction",
+        "claim": "COLLECT COD is associated with late deliveries",
+        "skeptic": "only 1.3 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 1.3,
+        "p_value": 0.0841,
+        "buckets": [
+          {
+            "bucket": "COLLECT COD",
+            "n": 12894,
+            "late": 8157,
+            "rate": 63.3
+          },
+          {
+            "bucket": "DELIVER IN PERSON",
+            "n": 12865,
+            "late": 8131,
+            "rate": 63.2
+          },
+          {
+            "bucket": "NONE",
+            "n": 12888,
+            "late": 8164,
+            "rate": 63.3
+          },
+          {
+            "bucket": "TAKE BACK RETURN",
+            "n": 12818,
+            "late": 7948,
+            "rate": 62
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "inconclusive": [
+      {
+        "factor": "supplier_nation",
+        "label": "Supplier nation",
+        "claim": "GERMANY is associated with late deliveries",
+        "skeptic": "too little data (smallest bucket n=51465)",
+        "spread_pp": 0,
+        "p_value": 1,
+        "buckets": [
+          {
+            "bucket": "GERMANY",
+            "n": 51465,
+            "late": 32400,
+            "rate": 63
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "dispatch_lag",
+        "label": "Dispatch lag (order → ship, days)",
+        "claim": "Dispatch lag is associated with late deliveries: the 01-30d bucket shows 1143/12811 late = 8.9% while the 91d+ bucket shows 13217/13217 late = 100%.",
+        "skeptic": "Analyst could not produce a verifiable claim (wording: The claim uses causal language ('is associated with') without establishing causation, and it generalizes the relationship based only on the provided buckets, ignoring the intermediate buckets (31-60d, 61-90d) which show a clear trend but not a simple association between 'dispatch lag' and 'late deliveries' across all data.)",
+        "spread_pp": 91.1,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "01-30d",
+            "n": 12811,
+            "late": 1143,
+            "rate": 8.9
+          },
+          {
+            "bucket": "31-60d",
+            "n": 12769,
+            "late": 6417,
+            "rate": 50.3
+          },
+          {
+            "bucket": "61-90d",
+            "n": 12668,
+            "late": 11623,
+            "rate": 91.8
+          },
+          {
+            "bucket": "91d+",
+            "n": 13217,
+            "late": 13217,
+            "rate": 100
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "supplier_region",
+        "label": "Supplier region",
+        "claim": "Supplier region EUROPE shows 32400/51465 late = 63% late rate; with only one region in the breakdown, no cross-region comparison is possible.",
+        "skeptic": "too little data (smallest bucket n=51465)",
+        "spread_pp": 0,
+        "p_value": 1,
+        "buckets": [
+          {
+            "bucket": "EUROPE",
+            "n": 51465,
+            "late": 32400,
+            "rate": 63
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "recommended_actions": [
+      "Extend committed-date windows for German orders to align with the 71-90d band (46.7% late rate).",
+      "Focus on reducing transit time to the 01-10d band (54.7% late rate) via carrier review."
+    ],
+    "limitations": [
+      "Findings show association, not proven causation.",
+      "Scope: 51465 line items in Zetaris (TPC-H)."
+    ],
+    "report_markdown": "# Late Shipment Analysis – GERMANY Suppliers (1992–1998)\n\n**Overall late rate: 63%**\n\n## Key Drivers (Supported)\n| Factor | Bucket | Late Rate | Gap vs Best |\n|--------|--------|-----------|-------------|\n| **Promised window (order → committed)** | 30–50 d | 79.3% | +32.6 pp |\n| | 71–90 d | 46.7% | baseline |\n| **Transit time (ship → receipt)** | 21–30 d | 71.1% | +16.4 pp |\n| | 01–10 d | 54.7% | baseline |\n\n## Ruled Out (No Meaningful Difference)\n- **Ship mode**: 0.7 pp spread\n- **Order priority**: 0.9 pp spread\n- **Shipping instruction**: 1.3 pp spread\n\n## Inconclusive\n- **Dispatch lag (order → ship)**: 01-30d 8.9%, 31-60d 50.3%, 61-90d 91.8%, 91d+ 100%"
+  },
+  "baseline": {
+    "n": 51465,
+    "late": 32400,
+    "rate": 63
+  },
+  "collaboration": {
+    "hypotheses_tested": 8,
+    "skeptic_send_backs": 7,
+    "skeptic_rejections": 3,
+    "report_audit_revisions": 0,
+    "retries": 0
+  },
+  "markovian": {
+    "run_id": "markovian-2-1793141995391",
+    "status": "completed",
+    "chunks": 10,
+    "carryover_tokens_budget": 384,
+    "tokens_used_estimated": 679,
+    "tokens_saved_estimated": 0,
+    "efficiency_percent": 0,
+    "final_carryover": "Deliveries are late because promised window and transit time are associated with higher late rates; for example, 30-50d windows show a 79.3% late rate versus 46.7% for 71-90d windows, and 21-30d transit time is associated with 71.1% lateness. Ship mode, order priority, and shipping instruction were ruled out as they show minimal differences (0.7 pp, 0.9 pp, and 1.3 pp respectively).\n\n[TASK_COMPLETE]",
+    "context_per_step": [
+      {
+        "step": 1,
+        "planner_context_tokens": 202,
+        "naive_history_tokens": 309
+      },
+      {
+        "step": 2,
+        "planner_context_tokens": 204,
+        "naive_history_tokens": 345
+      },
+      {
+        "step": 3,
+        "planner_context_tokens": 209,
+        "naive_history_tokens": 455
+      },
+      {
+        "step": 4,
+        "planner_context_tokens": 213,
+        "naive_history_tokens": 558
+      },
+      {
+        "step": 5,
+        "planner_context_tokens": 218,
+        "naive_history_tokens": 646
+      },
+      {
+        "step": 6,
+        "planner_context_tokens": 231,
+        "naive_history_tokens": 736
+      },
+      {
+        "step": 7,
+        "planner_context_tokens": 236,
+        "naive_history_tokens": 798
+      },
+      {
+        "step": 8,
+        "planner_context_tokens": 240,
+        "naive_history_tokens": 883
+      }
+    ]
+  },
+  "models_used": [
+    "nvidia/nemotron-3.5-bolt-e4b"
+  ],
+  "duration_ms": 290366,
+  "log_path": "logs\\run_20261027T225955_tznz.jsonl"
+}

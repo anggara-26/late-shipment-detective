@@ -1,0 +1,15 @@
+{
+  "project": "Late Shipment Detective",
+  "track": "The Agent That Can Explain Why",
+  "summary": "Agents investigate why supplier shipments arrive after the committed date. A Skeptic agent re-queries Zetaris to verify every number the Analyst quotes and rejects suspects the data does not support, so managers act on the real cause instead of the usual suspects.",
+  "entry_points": { "cli": "npm run investigate -- --input input_examples/example_1.json", "http": "npm run serve  ->  POST http://localhost:8000/run" },
+  "agents": ["PlannerAgent", "RetrieverAgent", "AnalystAgent", "SkepticAgent", "WriterAgent"],
+  "sponsor_tech": {
+    "zetaris": "Data layer. All queries (breakdowns, the Skeptic's independent recounts, baselines) run as SQL through the Zetaris REST API against the TPC-H dataset seeded in Zetaris. Adapter: src/adapters/zetaris.ts",
+    "meterless_engine": "Markovian engine (own implementation, src/engines/markovian/). The whole investigation is one Markovian run: one hypothesis per chunk, only the COMPLETED/REMAINING/DECISIONS/CONTEXT carryover passes forward. Passes the official conformance suite 8/8: npm run test:markovian",
+    "meterless_nightshift": "Primary AI provider for every agent model call (OpenAI-compatible Runtime, meterless-app/meterless-scope headers, model discovery via /v1/models). Client: src/adapters/nightshift.ts",
+    "nvidia": "NVIDIA Nemotron models configured in Nightshift's Providers tab power the agents; the model that handled every call is logged per trace event",
+    "cursor": "Optional; see README"
+  },
+  "pre_existing_components": "None. All code written during the build window (27-28 Oct 2026). Open-source dependencies: sql.js, tsx; vendored Meterless conformance runner (Apache-2.0)."
+}

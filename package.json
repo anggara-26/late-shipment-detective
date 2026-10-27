@@ -1,0 +1,31 @@
+{
+  "name": "late-shipment-detective",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Open Agent Hackathon 2026 - The Agent That Can Explain Why. Agents investigate why shipments arrive late, with a Skeptic that verifies every claim against Zetaris.",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "scripts": {
+    "investigate": "tsx src/cli.ts",
+    "serve": "tsx src/server.ts",
+    "check": "tsx scripts/check-connections.ts",
+    "discover": "tsx scripts/discover-tpch.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:markovian": "tsx scripts/run-conformance.ts",
+    "examples": "tsx scripts/generate-examples.ts",
+    "load-tpch": "tsx scripts/load-tpch.ts"
+  },
+  "dependencies": {
+    "sql.js": "1.12.0"
+  },
+  "devDependencies": {
+    "@duckdb/node-api": "^1.1.3-alpha.7",
+    "@types/node": "22.10.2",
+    "@types/sql.js": "1.4.9",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
+  }
+}

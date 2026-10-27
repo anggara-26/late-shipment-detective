@@ -1,0 +1,396 @@
+{
+  "trace_id": "run_20261027T230250_gs2y",
+  "question": "Why are so many shipments from our ASIA suppliers arriving after the committed date?",
+  "scope": {
+    "region": "ASIA",
+    "yearFrom": 1992,
+    "yearTo": 1998
+  },
+  "data_source": "zetaris",
+  "answer": {
+    "summary": "Shipments from ASIA suppliers have an overall late rate of 63.2%, primarily because promised windows are too tight; the 30-50d window is associated with a 79.8% late rate compared to 46.2% for the 71-90d window. Longer transit times are also associated with higher lateness, with 21-30d associated with a 71.7% late rate versus 54.9% for 01-10d. Factors like supplier nation (0.2 pp spread) and ship mode (1.2 pp spread) were ruled out as drivers.",
+    "supported": [
+      {
+        "factor": "commit_window",
+        "label": "Promised window (order → committed date, days)",
+        "claim": "30-50d is associated with late deliveries",
+        "skeptic": "33.6 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 33.6,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "30-50d",
+            "n": 92534,
+            "late": 73880,
+            "rate": 79.8
+          },
+          {
+            "bucket": "51-70d",
+            "n": 88445,
+            "late": 55540,
+            "rate": 62.8
+          },
+          {
+            "bucket": "71-90d",
+            "n": 88271,
+            "late": 40784,
+            "rate": 46.2
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "transit_time",
+        "label": "Transit time (ship → receipt, days)",
+        "claim": "the factor is associated with late deliveries",
+        "skeptic": "16.8 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 16.8,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "01-10d",
+            "n": 89785,
+            "late": 49260,
+            "rate": 54.9
+          },
+          {
+            "bucket": "11-20d",
+            "n": 89788,
+            "late": 56689,
+            "rate": 63.1
+          },
+          {
+            "bucket": "21-30d",
+            "n": 89677,
+            "late": 64255,
+            "rate": 71.7
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "dispatch_lag",
+        "label": "Dispatch lag (order → ship, days)",
+        "claim": "61-90d is associated with late deliveries",
+        "skeptic": "91 pp gap between buckets, p=0.0e+0",
+        "spread_pp": 91,
+        "p_value": 0,
+        "buckets": [
+          {
+            "bucket": "01-30d",
+            "n": 66774,
+            "late": 5981,
+            "rate": 9
+          },
+          {
+            "bucket": "31-60d",
+            "n": 66885,
+            "late": 34081,
+            "rate": 51
+          },
+          {
+            "bucket": "61-90d",
+            "n": 66428,
+            "late": 60979,
+            "rate": 91.8
+          },
+          {
+            "bucket": "91d+",
+            "n": 69163,
+            "late": 69163,
+            "rate": 100
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "ruled_out": [
+      {
+        "factor": "supplier_nation",
+        "label": "Supplier nation",
+        "claim": "CHINA is associated with late deliveries",
+        "skeptic": "only 0.2 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 0.2,
+        "p_value": 0.889,
+        "buckets": [
+          {
+            "bucket": "CHINA",
+            "n": 57559,
+            "late": 36449,
+            "rate": 63.3
+          },
+          {
+            "bucket": "INDIA",
+            "n": 51876,
+            "late": 32740,
+            "rate": 63.1
+          },
+          {
+            "bucket": "INDONESIA",
+            "n": 57041,
+            "late": 36121,
+            "rate": 63.3
+          },
+          {
+            "bucket": "JAPAN",
+            "n": 53428,
+            "late": 33715,
+            "rate": 63.1
+          },
+          {
+            "bucket": "VIETNAM",
+            "n": 49346,
+            "late": 31179,
+            "rate": 63.2
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "ship_mode",
+        "label": "Ship mode",
+        "claim": "TRUCK is associated with late deliveries",
+        "skeptic": "only 1.2 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 1.2,
+        "p_value": 0.0376,
+        "buckets": [
+          {
+            "bucket": "AIR",
+            "n": 38743,
+            "late": 24488,
+            "rate": 63.2
+          },
+          {
+            "bucket": "FOB",
+            "n": 38340,
+            "late": 24526,
+            "rate": 64
+          },
+          {
+            "bucket": "MAIL",
+            "n": 38432,
+            "late": 24257,
+            "rate": 63.1
+          },
+          {
+            "bucket": "RAIL",
+            "n": 38290,
+            "late": 24063,
+            "rate": 62.8
+          },
+          {
+            "bucket": "REG AIR",
+            "n": 38427,
+            "late": 24203,
+            "rate": 63
+          },
+          {
+            "bucket": "SHIP",
+            "n": 38413,
+            "late": 24219,
+            "rate": 63
+          },
+          {
+            "bucket": "TRUCK",
+            "n": 38605,
+            "late": 24448,
+            "rate": 63.3
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "order_priority",
+        "label": "Order priority",
+        "claim": "Order priority shows minimal association with late delivery rates, which range narrowly from 63.1% to 63.4% across all priority levels.",
+        "skeptic": "only 0.3 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 0.3,
+        "p_value": 0.835,
+        "buckets": [
+          {
+            "bucket": "1-URGENT",
+            "n": 53805,
+            "late": 34103,
+            "rate": 63.4
+          },
+          {
+            "bucket": "2-HIGH",
+            "n": 53931,
+            "late": 34017,
+            "rate": 63.1
+          },
+          {
+            "bucket": "3-MEDIUM",
+            "n": 53595,
+            "late": 33908,
+            "rate": 63.3
+          },
+          {
+            "bucket": "4-NOT SPECIFIED",
+            "n": 53646,
+            "late": 33854,
+            "rate": 63.1
+          },
+          {
+            "bucket": "5-LOW",
+            "n": 54273,
+            "late": 34322,
+            "rate": 63.2
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "ship_instruction",
+        "label": "Shipping instruction",
+        "claim": "DELIVER IN PERSON is associated with late deliveries",
+        "skeptic": "only 0.4 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 0.4,
+        "p_value": 0.391,
+        "buckets": [
+          {
+            "bucket": "COLLECT COD",
+            "n": 67601,
+            "late": 42671,
+            "rate": 63.1
+          },
+          {
+            "bucket": "DELIVER IN PERSON",
+            "n": 67064,
+            "late": 42572,
+            "rate": 63.5
+          },
+          {
+            "bucket": "NONE",
+            "n": 67555,
+            "late": 42694,
+            "rate": 63.2
+          },
+          {
+            "bucket": "TAKE BACK RETURN",
+            "n": 67030,
+            "late": 42267,
+            "rate": 63.1
+          }
+        ],
+        "narrowed_query": false
+      },
+      {
+        "factor": "quantity",
+        "label": "Line quantity",
+        "claim": "Late rate by line quantity ranges from 63.2% (41-50) to 63.3% (01-10).",
+        "skeptic": "only 0.1 pp between best and worst bucket — no meaningful difference",
+        "spread_pp": 0.1,
+        "p_value": 0.997,
+        "buckets": [
+          {
+            "bucket": "01-10",
+            "n": 53135,
+            "late": 33609,
+            "rate": 63.3
+          },
+          {
+            "bucket": "11-25",
+            "n": 80790,
+            "late": 51070,
+            "rate": 63.2
+          },
+          {
+            "bucket": "26-40",
+            "n": 80984,
+            "late": 51179,
+            "rate": 63.2
+          },
+          {
+            "bucket": "41-50",
+            "n": 54341,
+            "late": 34346,
+            "rate": 63.2
+          }
+        ],
+        "narrowed_query": false
+      }
+    ],
+    "inconclusive": [],
+    "recommended_actions": [
+      "Extend committed-date windows for ASIA orders to align with realistic transit times, targeting the 71-90d band.",
+      "Negotiate faster carrier lanes or consolidate shipments to reduce transit time into the 11-20d band.",
+      "Enforce a 30-day maximum dispatch lag and monitor weekly, given the sharp increase to 91.8% late rate after 61-90d."
+    ],
+    "limitations": [
+      "Findings show association, not proven causation.",
+      "Scope: 269250 line items in Zetaris (TPC-H)."
+    ],
+    "report_markdown": "# Late Shipment Analysis – ASIA Suppliers (1992–1998)\n\n**Overall late rate: 63.2%**\n\n## Key Drivers (Supported)\n| Factor | Bucket | Late Rate | Gap vs Best |\n|--------|--------|-----------|-------------|\n| **Promised window (order → committed)** | 30–50 d | 79.8% | +33.6 pp |\n| | 51–70 d | 62.8% | +16.6 pp |\n| | 71–90 d | 46.2% | baseline |\n| **Transit time (ship → receipt)** | 21–30 d | 71.7% | +16.8 pp |\n| | 11–20 d | 63.1% | +8.2 pp |\n| | 1–10 d | 54.9% | baseline |\n\n## Ruled Out (No Meaningful Difference)\n- **Supplier nation**: 0.2 pp spread\n- **Ship mode**: 1.2 pp spread\n- **Order priority**: 0.3 pp spread\n- **Shipping instruction**: 0.4 pp spread\n- **Line quantity**: 0.1 pp spread\n\n## Inconclusive\n- **Dispatch lag (order → ship)**: 91d+ 100% — data quality prevents a clean claim, but the step-change after 30 days warrants operational attention.\n\n## Recommended Actions\n1. **Extend committed-date windows** for ASIA orders by 15–20 days to move the bulk of orders into the 71–90 day band (46% late rate).\n2. **Reduce transit time** into the 11–20 day band (63% late rate) via faster lanes or consolidation.\n3. **Enforce a 30-day maximum dispatch lag** and monitor weekly; the available data suggests a sharp deterioration beyond that point."
+  },
+  "baseline": {
+    "n": 269250,
+    "late": 170204,
+    "rate": 63.2
+  },
+  "collaboration": {
+    "hypotheses_tested": 8,
+    "skeptic_send_backs": 2,
+    "skeptic_rejections": 5,
+    "report_audit_revisions": 1,
+    "retries": 1
+  },
+  "markovian": {
+    "run_id": "markovian-1-1793142170572",
+    "status": "completed",
+    "chunks": 10,
+    "carryover_tokens_budget": 384,
+    "tokens_used_estimated": 660,
+    "tokens_saved_estimated": 0,
+    "efficiency_percent": 0,
+    "final_carryover": "Shipments from ASIA suppliers have an overall late rate of 63.2%, primarily because promised windows are too tight; the 30-50d window is associated with a 79.8% late rate compared to 46.2% for the 71-90d window. Longer transit times are also associated with higher lateness, with 21-30d associated with a 71.7% late rate versus 54.9% for 01-10d. Factors like supplier nation (0.2 pp spread) and ship mode (1.2 pp spread) were ruled out as drivers.\n\n[TASK_COMPLETE]",
+    "context_per_step": [
+      {
+        "step": 1,
+        "planner_context_tokens": 190,
+        "naive_history_tokens": 251
+      },
+      {
+        "step": 2,
+        "planner_context_tokens": 193,
+        "naive_history_tokens": 315
+      },
+      {
+        "step": 3,
+        "planner_context_tokens": 198,
+        "naive_history_tokens": 407
+      },
+      {
+        "step": 4,
+        "planner_context_tokens": 202,
+        "naive_history_tokens": 521
+      },
+      {
+        "step": 5,
+        "planner_context_tokens": 206,
+        "naive_history_tokens": 639
+      },
+      {
+        "step": 6,
+        "planner_context_tokens": 217,
+        "naive_history_tokens": 722
+      },
+      {
+        "step": 7,
+        "planner_context_tokens": 221,
+        "naive_history_tokens": 809
+      },
+      {
+        "step": 8,
+        "planner_context_tokens": 225,
+        "naive_history_tokens": 892
+      }
+    ]
+  },
+  "models_used": [
+    "nvidia/nemotron-3.5-bolt-e4b",
+    "offline-fallback"
+  ],
+  "duration_ms": 115670,
+  "log_path": "logs\\run_20261027T230250_gs2y.jsonl"
+}

@@ -1,0 +1,7 @@
+Late Shipment Detective
+Licensed under the Apache License, Version 2.0.
+
+tests/conformance/runner.ts is the official Meterless Markovian conformance suite,
+copied unchanged from https://github.com/Meterless/Meterless (Apache-2.0).
+The Markovian engine in src/engines/markovian/ is this project's own implementation
+of the Meterless engine specification (engines/markovian/AGENTS.md).
