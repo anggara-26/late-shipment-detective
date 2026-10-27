@@ -172,4 +172,4 @@ None. All code was written during the build window. Dependencies: `sql.js`, `tsx
 
 ## Demo video
 
-Demo video: _add link_
+Demo video: https://youtu.be/sm1wHVP0fX4
